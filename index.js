@@ -8,16 +8,18 @@ app.get("/", (req, res) => {
 });
 
 app.get("/europeRandom", (req, res) => {
-    res.send("This is the europeRandom route.");
-    console.log("This is europeRandom route.");
-
+    // res.send("This is the europeRandom route.");
+    let europeRandomData;
     fs.readFile("./data/europe.json", "utf8", (error, data) => {
         if (error) {
             console.error(error);
             return;
         }
-        console.log(data);
+        // console.log(data);
+        europeRandomData = data;
     });
+    console.log(europeRandomData); // Undefined
+    res.send(europeRandomData); // Undefined
 });
 
 app.listen(port, () => {
