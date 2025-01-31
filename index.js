@@ -1,5 +1,5 @@
 const express = require("express");
-const fs = require("fs");
+const fs = require("fs").promises;
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -7,19 +7,23 @@ app.get("/", (req, res) => {
     res.send("Hello World!");
 });
 
-app.get("/europeRandom", (req, res) => {
-    // res.send("This is the europeRandom route.");
-    let europeRandomData;
-    fs.readFile("./data/europe.json", "utf8", (error, data) => {
-        if (error) {
-            console.error(error);
-            return;
-        }
-        // console.log(data);
-        europeRandomData = data;
-    });
-    console.log(europeRandomData); // Undefined
-    res.send(europeRandomData); // Undefined
+async function readFileAsync(filePath) {
+    try {
+        const data = await fs.readFile(filePath, "utf8");
+        return data;
+    } catch (error) {
+        throw error;
+    }
+}
+
+app.get("/europeRandom", async (req, res) => {
+    try {
+        const europeData = await readFileAsync("./data/europe.json");
+        console.log("europe data: ", europeData);
+        res.send(europeData);
+    } catch (error) {
+        throw error;
+    }
 });
 
 app.listen(port, () => {
