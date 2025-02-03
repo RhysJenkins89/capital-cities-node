@@ -17,6 +17,7 @@ async function readFileAsync(filePath) {
 }
 
 app.get("/europeRandom", async (req, res) => {
+    // The request needs to contain auth data
     try {
         const europeData = await readFileAsync("./data/europe.json");
         console.log("europe data: ", europeData);
