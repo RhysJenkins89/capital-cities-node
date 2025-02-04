@@ -4,7 +4,7 @@ const fs = require("fs").promises;
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors({ origin: "http://cities.rhysjenkins.uk" }));
+app.use(cors({ origin: "https://cities.rhysjenkins.uk" }));
 
 app.get("/", (req, res) => {
     res.send("Hello World!");
