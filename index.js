@@ -32,7 +32,7 @@ app.get("/europe", async (req, res) => {
 app.get("/asia", async (req, res) => {
     try {
         const asiaData = await readFileAsync("./data/asia.json");
-        res.send(europeData);
+        res.send(asiaData);
     } catch (error) {
         throw error;
     }
@@ -41,7 +41,7 @@ app.get("/asia", async (req, res) => {
 app.get("/africa", async (req, res) => {
     try {
         const africaData = await readFileAsync("./data/africa.json");
-        res.send(europeData);
+        res.send(africaData);
     } catch (error) {
         throw error;
     }
