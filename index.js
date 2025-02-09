@@ -4,7 +4,8 @@ const fs = require("fs").promises;
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors({ origin: "https://cities.rhysjenkins.uk" }));
+app.use(cors());
+// For the moment, I've removed the following in order to test from my local machine: { origin: "https://cities.rhysjenkins.uk" }
 
 app.get("/", (req, res) => {
     res.send("Hello World!");
