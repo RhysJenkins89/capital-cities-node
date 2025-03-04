@@ -1,6 +1,6 @@
 # Doing
 
--   Looking for country/cities apis
+-   Api auth route
 
 ## To do
 

@@ -1,8 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const fs = require("fs").promises;
+const bodyParser = require("body-parser");
 const app = express();
 const port = process.env.PORT || 3000;
+const jsonParser = bodyParser.json();
 
 app.use(cors());
 // For the moment, I've removed the following in order to test from my local machine: { origin: "https://cities.rhysjenkins.uk" }
@@ -19,6 +21,11 @@ async function readFileAsync(filePath) {
         throw error;
     }
 }
+
+// app.post("/signup", jsonParser, async (req, res) => {
+//     console.log("Req:", req.body);
+//     res.send("This the data that you sent:");
+// });
 
 app.get("/europe", async (req, res) => {
     try {
