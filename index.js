@@ -22,10 +22,13 @@ async function readFileAsync(filePath) {
     }
 }
 
-// app.post("/signup", jsonParser, async (req, res) => {
-//     console.log("Req:", req.body);
-//     res.send("This the data that you sent:");
-// });
+app.post("/signup", jsonParser, async (req, res) => {
+    console.log("Req:", req.body);
+    res.send({
+        message: "Successful request.",
+        body: req.body,
+    });
+});
 
 app.get("/europe", async (req, res) => {
     try {
@@ -57,3 +60,31 @@ app.get("/africa", async (req, res) => {
 app.listen(port, () => {
     console.log(`App is listening on port ${port}`);
 });
+
+// From the MongoDB setup:
+
+// const { MongoClient, ServerApiVersion } = require('mongodb');
+// const uri = "mongodb+srv://rhysjenkins89:<db_password>@capital-cities-site.z6o7t.mongodb.net/?retryWrites=true&w=majority&appName=capital-cities-site";
+
+// // Create a MongoClient with a MongoClientOptions object to set the Stable API version
+// const client = new MongoClient(uri, {
+//   serverApi: {
+//     version: ServerApiVersion.v1,
+//     strict: true,
+//     deprecationErrors: true,
+//   }
+// });
+
+// async function run() {
+//   try {
+//     // Connect the client to the server	(optional starting in v4.7)
+//     await client.connect();
+//     // Send a ping to confirm a successful connection
+//     await client.db("admin").command({ ping: 1 });
+//     console.log("Pinged your deployment. You successfully connected to MongoDB!");
+//   } finally {
+//     // Ensures that the client will close when you finish/error
+//     await client.close();
+//   }
+// }
+// run().catch(console.dir);
