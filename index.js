@@ -22,13 +22,13 @@ async function readFileAsync(filePath) {
     }
 }
 
-app.post("/signup", jsonParser, async (req, res) => {
-    console.log("Req:", req.body);
-    res.send({
-        message: "Successful request.",
-        body: req.body,
-    });
-});
+// app.post("/signup", jsonParser, async (req, res) => {
+//     console.log("Req:", req.body);
+//     res.send({
+//         message: "Successful request.",
+//         body: req.body,
+//     });
+// });
 
 app.get("/europe", async (req, res) => {
     try {
