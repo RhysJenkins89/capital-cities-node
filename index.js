@@ -1,4 +1,4 @@
-import express from "express";
+const express = require("express");
 const cors = require("cors");
 const fs = require("fs").promises;
 const bodyParser = require("body-parser");
@@ -6,11 +6,9 @@ const app = express();
 const port = process.env.PORT || 3000;
 const jsonParser = bodyParser.json();
 const secrets = require("./secrets");
-// import { Register } from "../controllers/auth.js";
 const Register = require("./controllers/auth.js");
-
-// import Validate from "../middleware/validate.js";
-// import { check } from "express-validator";
+const Validate = require("./middleware/validate.js");
+const { check } = require("express-validator");
 
 app.use(cors());
 // For the moment, I've removed the following in order to test from my local machine: { origin: "https://cities.rhysjenkins.uk" }
@@ -38,31 +36,33 @@ app.post("/signup", jsonParser, async (req, res) => {
     });
 });
 
-app.post(
-    "/register",
-    check("email")
-        .isEmail()
-        .withMessage("Enter a valid email address")
-        .normalizeEmail(),
-    check("first_name")
-        .not()
-        .isEmpty()
-        .withMessage("You first name is required")
-        .trim()
-        .escape(),
-    check("last_name")
-        .not()
-        .isEmpty()
-        .withMessage("You last name is required")
-        .trim()
-        .escape(),
-    check("password")
-        .notEmpty()
-        .isLength({ min: 8 })
-        .withMessage("Must be at least 8 chars long"),
-    Validate,
-    Register
-);
+app.post("/register", (req, res) => {});
+
+// app.post(
+//     "/register",
+//     check("email")
+//         .isEmail()
+//         .withMessage("Enter a valid email address")
+//         .normalizeEmail(),
+//     check("first_name")
+//         .not()
+//         .isEmpty()
+//         .withMessage("Your first name is required")
+//         .trim()
+//         .escape(),
+//     check("last_name")
+//         .not()
+//         .isEmpty()
+//         .withMessage("Your last name is required")
+//         .trim()
+//         .escape(),
+//     check("password")
+//         .notEmpty()
+//         .isLength({ min: 8 })
+//         .withMessage("Must be at least 8 chars long"),
+//     Validate,
+//     Register
+// );
 
 app.get("/europe", async (req, res) => {
     try {
