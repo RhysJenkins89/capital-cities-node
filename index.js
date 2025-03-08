@@ -36,7 +36,13 @@ app.post("/signup", jsonParser, async (req, res) => {
     });
 });
 
-app.post("/register", (req, res) => {});
+app.post("/register", (req, res) => {
+    console.log("check function:", check("email")); // This probably isn't going to return anything useful.
+    check("email")
+        .isEmail()
+        .withMessage("Enter a valid email address")
+        .normalizeEmail();
+});
 
 // app.post(
 //     "/register",
