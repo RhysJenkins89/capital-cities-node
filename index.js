@@ -38,7 +38,7 @@ app.post("/signup", jsonParser, async (req, res) => {
 
 app.post("/register", (req, res) => {
     console.log("check function:", check("email")); // This probably isn't going to return anything useful.
-    check("email")
+    check("email") // Where does this function get the email data?
         .isEmail()
         .withMessage("Enter a valid email address")
         .normalizeEmail();
