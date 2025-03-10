@@ -28,13 +28,22 @@ async function readFileAsync(filePath) {
     }
 }
 
-app.post("/signup", jsonParser, async (req, res) => {
-    console.log("Req:", req.body);
-    res.send({
-        message: "Successful request.",
-        body: req.body,
-    });
-});
+app.post(
+    "/signup",
+    jsonParser,
+    check("email") // Where does this function get the email data?
+        .isEmail()
+        .withMessage("Enter a valid email address")
+        .normalizeEmail(),
+    async (req, res) => {
+        console.log("check function:", check("email")); // This probably isn't going to return anything useful.
+        console.log("Req:", req.body);
+        res.send({
+            message: "Successful request.",
+            body: req.body,
+        });
+    }
+);
 
 app.post("/register", (req, res) => {
     console.log("check function:", check("email")); // This probably isn't going to return anything useful.
