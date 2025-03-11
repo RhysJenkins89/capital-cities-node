@@ -1,14 +1,14 @@
 const User = require("../models/User.js");
 
-module.export = async function Register(req, res) {
+async function Register(req, res) {
     // get required variables from request body
     // using es6 object destructing
-    const { first_name, last_name, email, password } = req.body;
+    const { firstName, lastName, email, password } = req.body;
     try {
         // create an instance of a user
         const newUser = new User({
-            first_name,
-            last_name,
+            firstName,
+            lastName,
             email,
             password,
         });
@@ -19,7 +19,7 @@ module.export = async function Register(req, res) {
                 status: "failed",
                 data: [],
                 message:
-                    "It seems you already have an account, please log in instead.",
+                    "It seems you already have an account. Please log in instead.",
             });
         const savedUser = await newUser.save(); // save new user into the database
         const { role, ...user_data } = savedUser._doc;
@@ -29,13 +29,16 @@ module.export = async function Register(req, res) {
             message:
                 "Thank you for registering with us. Your account has been successfully created.",
         });
-    } catch (err) {
+    } catch (error) {
         res.status(500).json({
             status: "error",
             code: 500,
             data: [],
             message: "Internal Server Error",
+            error: error,
         });
     }
     res.end();
-};
+}
+
+module.exports = Register;

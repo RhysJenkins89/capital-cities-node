@@ -18,6 +18,7 @@ app.get("/", (req, res) => {
 });
 
 console.log("Password:", secrets.mongoPassword);
+// console.log("Register:", Register());
 
 async function readFileAsync(filePath) {
     try {
@@ -81,10 +82,11 @@ app.post(
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         } else {
-            res.send({
-                message: "All inputs are valid",
-                body: req.body,
-            });
+            Register(req, res);
+            // res.send({
+            //     message: "All inputs are valid",
+            //     body: req.body,
+            // });
         }
     }
 );

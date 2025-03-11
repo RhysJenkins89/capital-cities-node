@@ -3,12 +3,12 @@ const bcrypt = require("bcrypt");
 
 const UserSchema = new mongoose.Schema(
     {
-        first_name: {
+        firstName: {
             type: String,
             required: "Your firstname is required",
             max: 25,
         },
-        last_name: {
+        lastName: {
             type: String,
             required: "Your lastname is required",
             max: 25,
@@ -51,4 +51,4 @@ UserSchema.pre("save", function (next) {
     });
 });
 
-module.export = mongoose.model("users", UserSchema);
+module.exports = mongoose.model("users", UserSchema);
