@@ -9,9 +9,13 @@ const secrets = require("./secrets");
 const Register = require("./controllers/auth.js");
 const Validate = require("./middleware/validate.js");
 const { body, validationResult } = require("express-validator");
+const databaseConnect = require("./database/db.js");
 
 app.use(cors());
 // For the moment, I've removed the following in order to test from my local machine: { origin: "https://cities.rhysjenkins.uk" }
+
+// Connect to the database
+databaseConnect();
 
 app.get("/", (req, res) => {
     res.send("Hello world!");
@@ -121,37 +125,3 @@ app.get("/africa", async (req, res) => {
 app.listen(port, () => {
     console.log(`App is listening on port ${port}`);
 });
-
-// From the MongoDB setup:
-
-const { MongoClient, ServerApiVersion } = require("mongodb");
-const uri = `mongodb+srv://rhysjenkins89:${secrets.mongoPassword}@capital-cities-site.z6o7t.mongodb.net/?retryWrites=true&w=majority&appName=capital-cities-site`;
-
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
-    serverApi: {
-        version: ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true,
-    },
-});
-
-async function run() {
-    try {
-        // Connect the client to the server	(optional starting in v4.7)
-        await client.connect();
-        // Send a ping to confirm a successful connection
-        await client.db("admin").command({ ping: 1 });
-        console.log(
-            "Pinged your deployment. You successfully connected to MongoDB!"
-        );
-    } catch (error) {
-        console.log("Connection failed.");
-    }
-    // finally {
-    //     // Ensures that the client will close when you finish/error
-    //     console.log("Closing the connection in the finally block.");
-    //     await client.close();
-    // }
-}
-run().catch(console.dir);
