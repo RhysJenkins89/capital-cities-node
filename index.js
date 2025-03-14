@@ -21,9 +21,6 @@ app.get("/", (req, res) => {
     res.send("Hello world!");
 });
 
-console.log("Password:", secrets.mongoPassword);
-// console.log("Register:", Register());
-
 async function readFileAsync(filePath) {
     try {
         const data = await fs.readFile(filePath, "utf8");
@@ -38,7 +35,7 @@ app.post(
     jsonParser,
     [
         body("firstName")
-            .trim() // Always call .trim before calling .notEmpty in order to remove whatspace before checking if the field is empty
+            .trim() // Always call .trim before calling .notEmpty in order to remove whitespace before checking if the field is empty
             .notEmpty()
             .withMessage("The first name field is required")
             .isAlpha("en-GB", { ignore: " -'" }) // This string allows spaces, hyphens, and apostrophes
@@ -87,10 +84,6 @@ app.post(
             return res.status(400).json({ errors: errors.array() });
         } else {
             Register(req, res);
-            // res.send({
-            //     message: "All inputs are valid",
-            //     body: req.body,
-            // });
         }
     }
 );
@@ -124,4 +117,18 @@ app.get("/africa", async (req, res) => {
 
 app.listen(port, () => {
     console.log(`App is listening on port ${port}`);
+});
+
+// Building login functionality here for the moment
+const jwt = require("jsonwebtoken");
+const User = require("./models/User.js");
+
+const JWT_SECRET = process.env.JWT_SECRET || "secret-key";
+
+app.post("/login", jsonParser, async (req, res) => {
+    const { email, password } = req.body;
+    try {
+        const user = await User.findOne({ email });
+        if (!user) return res.status(400).json({ error: "User not found." });
+    } catch (error) {}
 });
