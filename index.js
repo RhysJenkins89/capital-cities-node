@@ -129,7 +129,7 @@ const JWT_SECRET = process.env.JWT_SECRET || "secret-key";
 app.post("/login", jsonParser, async (req, res) => {
     const { email, password } = req.body;
     try {
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ email }).select("+password"); // mongoose excludes the password field by default
         if (!user) {
             return res.status(400).json({ error: "User not found." });
         }
