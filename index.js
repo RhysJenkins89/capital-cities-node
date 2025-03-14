@@ -122,6 +122,7 @@ app.listen(port, () => {
 // Building login functionality here for the moment
 const jwt = require("jsonwebtoken");
 const User = require("./models/User.js");
+const bcrypt = require("bcrypt");
 
 const JWT_SECRET = process.env.JWT_SECRET || "secret-key";
 
@@ -129,6 +130,23 @@ app.post("/login", jsonParser, async (req, res) => {
     const { email, password } = req.body;
     try {
         const user = await User.findOne({ email });
-        if (!user) return res.status(400).json({ error: "User not found." });
-    } catch (error) {}
+        if (!user) {
+            return res.status(400).json({ error: "User not found." });
+        }
+
+        const passwordMatch = await bcrypt.compare(password, user.password);
+        if (!passwordMatch) {
+            return res.status(400).json({ error: "invalid credentials." });
+        }
+
+        const token = jwt.sign({ userId: user._id }, JWT_SECRET, {
+            expiresIn: "1h",
+        });
+
+        res.json({ token, userId: user._id });
+    } catch (error) {
+        res.status(500).json({
+            error: { message: error.message, stack: error.stack },
+        });
+    }
 });
