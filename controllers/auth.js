@@ -13,7 +13,8 @@ async function Register(req, res) {
             password,
         });
         // Check if user already exists
-        console.log("The User object:", User);
+        // console.log("User.findOne:", User.findOne());
+        // console.log("The newly created user:", newUser);
         const existingUser = await User.findOne({ email });
         if (existingUser) {
             return res.status(400).json({
