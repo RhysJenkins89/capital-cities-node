@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const secrets = require("../secrets");
-const uri = `mongodb+srv://rhysjenkins89:${secrets.mongoPassword}@capital-cities-site.z6o7t.mongodb.net/?retryWrites=true&w=majority&appName=capital-cities-site`;
+const databasePassword = process.env.mongoPassword;
+const uri = `mongodb+srv://rhysjenkins89:${databasePassword}@capital-cities-site.z6o7t.mongodb.net/?retryWrites=true&w=majority&appName=capital-cities-site`;
 
 async function databaseConnect() {
     try {
