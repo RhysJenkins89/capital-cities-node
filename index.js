@@ -5,11 +5,17 @@ const bodyParser = require("body-parser");
 const app = express();
 const port = process.env.PORT || 3000;
 const jsonParser = bodyParser.json();
-
-// This project needs a new branch.
+const secrets = require("./secrets");
+const Register = require("./controllers/auth.js");
+const Validate = require("./middleware/validate.js");
+const { body, validationResult } = require("express-validator");
+const databaseConnect = require("./database/db.js");
 
 app.use(cors());
 // For the moment, I've removed the following in order to test from my local machine: { origin: "https://cities.rhysjenkins.uk" }
+
+// Connect to the database
+databaseConnect();
 
 app.get("/", (req, res) => {
     res.send("Hello world!");
@@ -24,13 +30,63 @@ async function readFileAsync(filePath) {
     }
 }
 
-// app.post("/signup", jsonParser, async (req, res) => {
-//     console.log("Req:", req.body);
-//     res.send({
-//         message: "Successful request.",
-//         body: req.body,
-//     });
-// });
+app.post(
+    "/signup",
+    jsonParser,
+    [
+        body("firstName")
+            .trim() // Always call .trim before calling .notEmpty in order to remove whitespace before checking if the field is empty
+            .notEmpty()
+            .withMessage("The first name field is required")
+            .isAlpha("en-GB", { ignore: " -'" }) // This string allows spaces, hyphens, and apostrophes
+            .withMessage(
+                "The first name field must contain only letters, spaces, hyphens, or apostrophes"
+            )
+            .escape(),
+        body("lastName")
+            .trim()
+            .notEmpty()
+            .withMessage("The last name field is required")
+            .isAlpha("en-GB", { ignore: " -'" })
+            .withMessage(
+                "The last name field must contain only letters, spaces, hyphens, or apostrophes"
+            )
+            .escape(),
+        body("email")
+            .trim()
+            .isEmail()
+            .withMessage("Please enter a valid email address."),
+        body("password")
+            .trim()
+            .notEmpty()
+            .withMessage("Please enter a password.")
+            .isLength({ min: 10 })
+            .withMessage("Your password must contain at least ten characters.")
+            .matches(/[A-Z]/)
+            .withMessage(
+                "Your password must contain at least one uppercase letter."
+            )
+            .matches(/[a-z]/)
+            .withMessage(
+                "Your password must contain at least one lowercase letter."
+            )
+            .matches(/[0-9]/)
+            .withMessage("Your password must contain at least one number.")
+            .matches(/[\W_]/)
+            .withMessage(
+                "Your password must contain at least one special character."
+            )
+            .escape(),
+    ],
+    (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        } else {
+            Register(req, res);
+        }
+    }
+);
 
 app.get("/europe", async (req, res) => {
     try {
@@ -63,30 +119,34 @@ app.listen(port, () => {
     console.log(`App is listening on port ${port}`);
 });
 
-// From the MongoDB setup:
+// Building login functionality here for the moment
+const jwt = require("jsonwebtoken");
+const User = require("./models/User.js");
+const bcrypt = require("bcrypt");
 
-// const { MongoClient, ServerApiVersion } = require('mongodb');
-// const uri = "mongodb+srv://rhysjenkins89:<db_password>@capital-cities-site.z6o7t.mongodb.net/?retryWrites=true&w=majority&appName=capital-cities-site";
+const JWT_SECRET = process.env.JWT_SECRET || "secret-key";
 
-// // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-// const client = new MongoClient(uri, {
-//   serverApi: {
-//     version: ServerApiVersion.v1,
-//     strict: true,
-//     deprecationErrors: true,
-//   }
-// });
+app.post("/login", jsonParser, async (req, res) => {
+    const { email, password } = req.body;
+    try {
+        const user = await User.findOne({ email }).select("+password"); // mongoose excludes the password field by default
+        if (!user) {
+            return res.status(400).json({ error: "User not found." });
+        }
 
-// async function run() {
-//   try {
-//     // Connect the client to the server	(optional starting in v4.7)
-//     await client.connect();
-//     // Send a ping to confirm a successful connection
-//     await client.db("admin").command({ ping: 1 });
-//     console.log("Pinged your deployment. You successfully connected to MongoDB!");
-//   } finally {
-//     // Ensures that the client will close when you finish/error
-//     await client.close();
-//   }
-// }
-// run().catch(console.dir);
+        const passwordMatch = await bcrypt.compare(password, user.password);
+        if (!passwordMatch) {
+            return res.status(400).json({ error: "invalid credentials." });
+        }
+
+        const token = jwt.sign({ userId: user._id }, JWT_SECRET, {
+            expiresIn: "1h",
+        });
+
+        res.json({ token, userId: user._id });
+    } catch (error) {
+        res.status(500).json({
+            error: { message: error.message, stack: error.stack },
+        });
+    }
+});
