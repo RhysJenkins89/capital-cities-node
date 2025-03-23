@@ -161,7 +161,7 @@ app.post("/login", jsonParser, async (req, res) => {
             expiresIn: "1h",
         });
 
-        res.json({ token, userId: user._id });
+        res.json({ token, user });
     } catch (error) {
         res.status(500).json({
             error: { message: error.message, stack: error.stack },
