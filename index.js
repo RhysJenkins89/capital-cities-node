@@ -133,6 +133,37 @@ app.get("/africa", async (req, res) => {
     }
 });
 
+app.get("/north-america", async (req, res) => {
+    try {
+        const northAmericaData = await readFileAsync(
+            "./data/north-america.json"
+        );
+        res.send(northAmericaData);
+    } catch (error) {
+        throw error;
+    }
+});
+
+app.get("/oceania", async (req, res) => {
+    try {
+        const oceaniaData = await readFileAsync("./data/oceania.json");
+        res.send(oceaniaData);
+    } catch (error) {
+        throw error;
+    }
+});
+
+app.get("/south-america", async (req, res) => {
+    try {
+        const southAmericaData = await readFileAsync(
+            "./data/south-america.json"
+        );
+        res.send(southAmericaData);
+    } catch (error) {
+        throw error;
+    }
+});
+
 app.listen(port, () => {
     console.log(`App is listening on port ${port}`);
 });
