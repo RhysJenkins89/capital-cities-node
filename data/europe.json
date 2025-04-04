@@ -1,7 +1,51 @@
 {
-    "United Kingdom": {
-        "capital": "London",
-        "definiteArticle": true
+    "Albania": {
+        "capital": "Tirana",
+        "definiteArticle": false
+    },
+    "Andorra": {
+        "capital": "Andorra la Vella",
+        "definiteArticle": false
+    },
+    "Austria": {
+        "capital": "Vienna",
+        "definiteArticle": false
+    },
+    "Belarus": {
+        "capital": "Minsk",
+        "definiteArticle": false
+    },
+    "Bosnia and Herzegovina": {
+        "capital": "Sarajevo",
+        "definiteArticle": false
+    },
+    "Bulgaria": {
+        "capital": "Sofia",
+        "definiteArticle": false
+    },
+    "Croatia": {
+        "capital": "Zagreb",
+        "definiteArticle": false
+    },
+    "Cyprus": {
+        "capital": "Nicosia",
+        "definiteArticle": false
+    },
+    "Czechia": {
+        "capital": "Prague",
+        "definiteArticle": false
+    },
+    "Denmark": {
+        "capital": "Copenhagen",
+        "definiteArticle": false
+    },
+    "Estonia": {
+        "capital": "Tallinn",
+        "definiteArticle": false
+    },
+    "Finland": {
+        "capital": "Helsinki",
+        "definiteArticle": false
     },
     "France": {
         "capital": "Paris",
@@ -11,12 +55,128 @@
         "capital": "Berlin",
         "definiteArticle": false
     },
+    "Greece": {
+        "capital": "Athens",
+        "definiteArticle": false
+    },
+    "Hungary": {
+        "capital": "Budapest",
+        "definiteArticle": false
+    },
+    "Iceland": {
+        "capital": "Reykjavik",
+        "definiteArticle": false
+    },
+    "Ireland": {
+        "capital": "Dublin",
+        "definiteArticle": false
+    },
+    "Italy": {
+        "capital": "Rome",
+        "definiteArticle": false
+    },
+    "Latvia": {
+        "capital": "Riga",
+        "definiteArticle": false
+    },
+    "Liechtenstein": {
+        "capital": "Vaduz",
+        "definiteArticle": false
+    },
+    "Lithuania": {
+        "capital": "Vilnius",
+        "definiteArticle": false
+    },
+    "Luxembourg": {
+        "capital": "Luxembourg City",
+        "definiteArticle": false
+    },
+    "Malta": {
+        "capital": "Valletta",
+        "definiteArticle": false
+    },
+    "Moldova": {
+        "capital": "Chisinau",
+        "definiteArticle": false
+    },
+    "Monaco": {
+        "capital": "Monaco",
+        "definiteArticle": false
+    },
+    "Montenegro": {
+        "capital": "Podgorica",
+        "definiteArticle": false
+    },
+    "Netherlands": {
+        "capital": "Amsterdam",
+        "definiteArticle": false
+    },
+    "North Macedonia": {
+        "capital": "Skopje",
+        "definiteArticle": false
+    },
+    "Norway": {
+        "capital": "Oslo",
+        "definiteArticle": false
+    },
+    "Poland": {
+        "capital": "Wawsaw",
+        "definiteArticle": false
+    },
+    "Portugal": {
+        "capital": "Lisbon",
+        "definiteArticle": false
+    },
+    "Romania": {
+        "capital": "Bucharest",
+        "definiteArticle": false
+    },
+    "Russia": {
+        "capital": "Moscow",
+        "definiteArticle": false
+    },
+    "San Marino": {
+        "capital": "San Marino City",
+        "definiteArticle": false
+    },
+    "Serbia": {
+        "capital": "Belgrade",
+        "definiteArticle": false
+    },
+    "Slovakia": {
+        "capital": "Bratislava",
+        "definiteArticle": false
+    },
+    "Slovenia": {
+        "capital": "Ljubljana",
+        "definiteArticle": false
+    },
     "Spain": {
         "capital": "Madrid",
         "definiteArticle": false
     },
-    "Andorra": {
-        "capital": "Andorra la Vella",
+    "Sweden": {
+        "capital": "Copenhagen",
         "definiteArticle": false
+    },
+    "Switzerland": {
+        "capital": "Bern",
+        "definiteArticle": false
+    },
+    "Turkey": {
+        "capital": "Ankara",
+        "definiteArticle": false
+    },
+    "Ukraine": {
+        "capital": "Kyiv",
+        "definiteArticle": false
+    },
+    "United Kingdom": {
+        "capital": "London",
+        "definiteArticle": true
+    },
+    "Vatican City": {
+        "capital": "Vatican City",
+        "definiteArticle": true
     }
 }
