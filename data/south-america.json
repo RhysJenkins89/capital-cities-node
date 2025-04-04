@@ -1,0 +1,50 @@
+{
+    "Argentina": {
+        "capital": "Buenos Aires",
+        "definiteArticle": false
+    },
+    "Bolivia": {
+        "capital": "Sucre",
+        "definiteArticle": false
+    },
+    "Brazil": {
+        "capital": "Brasília",
+        "definiteArticle": false
+    },
+    "Chile": {
+        "capital": "Santiago",
+        "definiteArticle": false
+    },
+    "Colombia": {
+        "capital": "Bogotá",
+        "definiteArticle": false
+    },
+    "Ecuador": {
+        "capital": "Quito",
+        "definiteArticle": false
+    },
+    "Guyana": {
+        "capital": "Georgetown",
+        "definiteArticle": false
+    },
+    "Paraguay": {
+        "capital": "Asunción",
+        "definiteArticle": false
+    },
+    "Peru": {
+        "capital": "Lima",
+        "definiteArticle": false
+    },
+    "Suriname": {
+        "capital": "Paramaribo",
+        "definiteArticle": false
+    },
+    "Uruguay": {
+        "capital": "Montevideo",
+        "definiteArticle": false
+    },
+    "Venezuela": {
+        "capital": "Caracas",
+        "definiteArticle": false
+    }
+}

@@ -1,0 +1,94 @@
+{
+    "Antigua and Barbuda": {
+        "capital": "Saint John's",
+        "definiteArticle": false
+    },
+    "Bahamas": {
+        "capital": "Nassau",
+        "definiteArticle": true
+    },
+    "Barbados": {
+        "capital": "Bridgetown",
+        "definiteArticle": false
+    },
+    "Belize": {
+        "capital": "Belmopan",
+        "definiteArticle": false
+    },
+    "Canada": {
+        "capital": "Ottawa",
+        "definiteArticle": false
+    },
+    "Costa Rica": {
+        "capital": "San José",
+        "definiteArticle": false
+    },
+    "Cuba": {
+        "capital": "Havana",
+        "definiteArticle": false
+    },
+    "Dominica": {
+        "capital": "Roseau",
+        "definiteArticle": false
+    },
+    "Dominican Republic": {
+        "capital": "Santo Domingo",
+        "definiteArticle": true
+    },
+    "El Salvador": {
+        "capital": "San Salvador",
+        "definiteArticle": true
+    },
+    "Grenada": {
+        "capital": "St. George's",
+        "definiteArticle": false
+    },
+    "Guatemala": {
+        "capital": "Guatemala City",
+        "definiteArticle": false
+    },
+    "Haiti": {
+        "capital": "Port-au-Prince",
+        "definiteArticle": false
+    },
+    "Honduras": {
+        "capital": "Tegucigalpa",
+        "definiteArticle": false
+    },
+    "Jamaica": {
+        "capital": "Kingston",
+        "definiteArticle": false
+    },
+    "Mexico": {
+        "capital": "Mexico City",
+        "definiteArticle": false
+    },
+    "Nicaragua": {
+        "capital": "Managua",
+        "definiteArticle": false
+    },
+    "Panama": {
+        "capital": "Panama City",
+        "definiteArticle": false
+    },
+    "Saint Kitts and Nevis": {
+        "capital": "Basseterre",
+        "definiteArticle": false
+    },
+    "Saint Lucia": {
+        "capital": "Castries",
+        "definiteArticle": false
+    },
+    "Saint Vincent and the Grenadines": {
+        "capital": "Kingstown",
+        "definiteArticle": false
+    },
+    "Trinidad and Tobago": {
+        "capital": "Port of Spain",
+        "definiteArticle": false
+    },
+    "United States": {
+        "capital": "Washington, D.C.",
+        "definiteArticle": true
+    }
+}

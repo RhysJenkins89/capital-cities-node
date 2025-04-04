@@ -1,11 +1,8 @@
 const User = require("../models/User.js");
 
 async function Register(req, res) {
-    // get required variables from request body
-    // using es6 object destructing
     const { firstName, lastName, email, password } = req.body;
     try {
-        // create an instance of a user
         const newUser = new User({
             firstName,
             lastName,
@@ -13,8 +10,6 @@ async function Register(req, res) {
             password,
         });
         // Check if user already exists
-        // console.log("User.findOne:", User.findOne());
-        // console.log("The newly created user:", newUser);
         const existingUser = await User.findOne({ email });
         if (existingUser) {
             return res.status(400).json({
