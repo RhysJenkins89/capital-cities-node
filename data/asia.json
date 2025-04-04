@@ -35,10 +35,6 @@
         "capital": "Beijing",
         "definiteArticle": false
     },
-    "Cyprus": {
-        "capital": "Nicosia",
-        "definiteArticle": false
-    },
     "Georgia": {
         "capital": "Tbilisi",
         "definiteArticle": false
@@ -123,20 +119,12 @@
         "capital": "Islamabad",
         "definiteArticle": false
     },
-    "Palestine": {
-        "capital": "East Jerusalem",
-        "definiteArticle": false
-    },
     "Philippines": {
         "capital": "Manila",
         "definiteArticle": true
     },
     "Qatar": {
         "capital": "Doha",
-        "definiteArticle": false
-    },
-    "Russia": {
-        "capital": "Moscow",
         "definiteArticle": false
     },
     "Saudi Arabia": {
@@ -173,10 +161,6 @@
     },
     "Timor-Leste": {
         "capital": "Dili",
-        "definiteArticle": false
-    },
-    "Turkey": {
-        "capital": "Ankara",
         "definiteArticle": false
     },
     "Turkmenistan": {
