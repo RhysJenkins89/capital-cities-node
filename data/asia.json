@@ -140,8 +140,9 @@
         "definiteArticle": false
     },
     "Sri Lanka": {
-        "capital": "Sri Jayawardenepura Kotte",
-        "definiteArticle": false
+        "capital": "Legislative: Sri Jayawardenepura Kotte. Administrative and Judicial: Colombo.",
+        "definiteArticle": false,
+        "notes": "Sri Jayawardenepura Kotte is Sri lanka's legislative capital and largest city. Colombo is the administrative and judicial capital and the country's political, financial, and cultural centre."
     },
     "Syria": {
         "capital": "Damascus",
