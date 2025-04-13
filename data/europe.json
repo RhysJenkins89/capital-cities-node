@@ -109,7 +109,7 @@
     },
     "Netherlands": {
         "capital": "Amsterdam",
-        "definiteArticle": false
+        "definiteArticle": true
     },
     "North Macedonia": {
         "capital": "Skopje",
