@@ -108,8 +108,22 @@ app.post(
 
 app.get("/europe", async (req, res) => {
     try {
-        const europeData = await readFileAsync("./data/europe.json");
-        res.send(europeData);
+        const databasePassword = process.env.mongoPassword;
+        const uri = `mongodb+srv://rhysjenkins89:${databasePassword}@capital-cities-site.z6o7t.mongodb.net/?retryWrites=true&w=majority&appName=capital-cities-site`;
+
+        const continentsConnection = mongoose.createConnection(uri, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            dbName: 'continents'
+        });
+
+        const countrySchema = new mongoose.Schema({
+            capital: String,
+            definiteArticle: Boolean
+        });
+
+        // const europeData = await readFileAsync("./data/europe.json"); // fetch from the database here
+        // res.send(europeData);
     } catch (error) {
         throw error;
     }
@@ -172,6 +186,7 @@ app.listen(port, () => {
 const jwt = require("jsonwebtoken");
 const User = require("./models/User.js");
 const bcrypt = require("bcrypt");
+const { default: mongoose } = require("mongoose");
 
 const JWT_SECRET = process.env.JWT_SECRET || "secret-key";
 
