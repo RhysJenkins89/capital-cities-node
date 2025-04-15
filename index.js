@@ -119,7 +119,7 @@ app.get("/europe", async (req, res) => {
         const europeData = continentsDb.collection('europe');
         const countriesData = await europeData.find({}).toArray();
         delete countriesData[0]['_id'];
-        res.send(countriesData[0]);
+        res.send(countriesData[0]); // I'm sending back only the object here, which is position 0 in the array.
     } catch (error) {
         throw error;
     }
