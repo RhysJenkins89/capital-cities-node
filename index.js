@@ -11,6 +11,9 @@ const Validate = require("./middleware/validate.js");
 const { body, validationResult } = require("express-validator");
 const databaseConnect = require("./database/db.js");
 
+// I'm trying what might be a more intuitive way of getting to the database here
+const { MongoClient } = require('mongodb');
+
 const allowedOrigins = [
     "http://localhost:5173",
     "https://cities.rhysjenkins.uk",
@@ -33,7 +36,7 @@ app.use(cors(corsOptions));
 // For the moment, I've removed the following in order to test from my local machine: { origin: "https://cities.rhysjenkins.uk" }
 
 // Connect to the database
-databaseConnect();
+// databaseConnect();
 
 app.get("/", (req, res) => {
     res.send("Hello world!");
@@ -108,8 +111,15 @@ app.post(
 
 app.get("/europe", async (req, res) => {
     try {
-        const europeData = await readFileAsync("./data/europe.json");
-        res.send(europeData);
+        const databasePassword = process.env.mongoPassword;
+        const uri = `mongodb+srv://rhysjenkins89:${databasePassword}@capital-cities-site.z6o7t.mongodb.net/?retryWrites=true&w=majority&appName=capital-cities-site`;
+        const mongoClient = new MongoClient(uri);
+        await mongoClient.connect();
+        const continentsDb = mongoClient.db('continents');
+        const europeData = continentsDb.collection('europe');
+        const countriesData = await europeData.find({}).toArray();
+        delete countriesData[0]['_id'];
+        res.send(countriesData);
     } catch (error) {
         throw error;
     }
@@ -172,6 +182,7 @@ app.listen(port, () => {
 const jwt = require("jsonwebtoken");
 const User = require("./models/User.js");
 const bcrypt = require("bcrypt");
+const { default: mongoose } = require("mongoose");
 
 const JWT_SECRET = process.env.JWT_SECRET || "secret-key";
 
