@@ -111,6 +111,10 @@ app.post(
 
 // What is a schema?
 // A schema defines the structure of your collection documents. A Mongoose schema maps directly to a MongoDB collection.
+// const continentSchema = new Schema({
+//      capital: String,
+//      definiteArticle: Boolean
+// })
 
 app.get("/europe", async (req, res) => {
     try {
