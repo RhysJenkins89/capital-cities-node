@@ -12,7 +12,7 @@ const { body, validationResult } = require("express-validator");
 const databaseConnect = require("./database/db.js");
 
 // I'm trying what might be a more intuitive way of getting to the database here
-const { MongoClient } = require('mongodb');
+// const { MongoClient } = require("mongodb");
 
 const allowedOrigins = [
     "http://localhost:5173",
@@ -36,7 +36,7 @@ app.use(cors(corsOptions));
 // For the moment, I've removed the following in order to test from my local machine: { origin: "https://cities.rhysjenkins.uk" }
 
 // Connect to the database
-// databaseConnect();
+databaseConnect();
 
 app.get("/", (req, res) => {
     res.send("Hello world!");
@@ -109,16 +109,19 @@ app.post(
     }
 );
 
+// What is a schema?
+// A schema defines the structure of your collection documents. A Mongoose schema maps directly to a MongoDB collection.
+
 app.get("/europe", async (req, res) => {
     try {
-        const databasePassword = process.env.mongoPassword;
-        const uri = `mongodb+srv://rhysjenkins89:${databasePassword}@capital-cities-site.z6o7t.mongodb.net/?retryWrites=true&w=majority&appName=capital-cities-site`;
-        const mongoClient = new MongoClient(uri);
-        await mongoClient.connect();
-        const continentsDb = mongoClient.db('continents');
-        const europeData = continentsDb.collection('europe');
+        // const databasePassword = process.env.mongoPassword;
+        // const uri = `mongodb+srv://rhysjenkins89:${databasePassword}@capital-cities-site.z6o7t.mongodb.net/?retryWrites=true&w=majority&appName=capital-cities-site`;
+        // const mongoClient = new MongoClient(uri);
+        // await mongoClient.connect();
+        const continentsDb = mongoClient.db("continents");
+        const europeData = continentsDb.collection("europe");
         const countriesData = await europeData.find({}).toArray();
-        delete countriesData[0]['_id'];
+        delete countriesData[0]["_id"];
         res.send(countriesData[0]); // I'm sending back only the object here, which is position 0 in the array.
     } catch (error) {
         throw error;
