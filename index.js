@@ -10,6 +10,7 @@ const Register = require("./controllers/auth.js");
 const Validate = require("./middleware/validate.js");
 const { body, validationResult } = require("express-validator");
 const databaseConnect = require("./database/db.js");
+const mongoose = require("mongoose");
 
 // I'm trying what might be a more intuitive way of getting to the database here
 // const { MongoClient } = require("mongodb");
@@ -111,22 +112,43 @@ app.post(
 
 // What is a schema?
 // A schema defines the structure of your collection documents. A Mongoose schema maps directly to a MongoDB collection.
-// const continentSchema = new Schema({
-//      capital: String,
-//      definiteArticle: Boolean
-// })
+// const countrySchema = new mongoose.Schema({
+//     capital: String,
+//     definiteArticle: Boolean,
+// });
+
+// const ContinentsModel = mongoose.model("continent", countrySchema);
+
+// const countries = ContinentsModel.findOne()
 
 app.get("/europe", async (req, res) => {
     try {
-        // const databasePassword = process.env.mongoPassword;
-        // const uri = `mongodb+srv://rhysjenkins89:${databasePassword}@capital-cities-site.z6o7t.mongodb.net/?retryWrites=true&w=majority&appName=capital-cities-site`;
+        const databasePassword = process.env.mongoPassword;
+        const uri = `mongodb+srv://rhysjenkins89:${databasePassword}@capital-cities-site.z6o7t.mongodb.net/?retryWrites=true&w=majority&appName=capital-cities-site`;
         // const mongoClient = new MongoClient(uri);
         // await mongoClient.connect();
-        const continentsDb = mongoClient.db("continents");
-        const europeData = continentsDb.collection("europe");
-        const countriesData = await europeData.find({}).toArray();
-        delete countriesData[0]["_id"];
-        res.send(countriesData[0]); // I'm sending back only the object here, which is position 0 in the array.
+        // const continentsDb = mongoClient.db("continents");
+        // const europeData = continentsDb.collection("europe");
+        // const countriesData = await europeData.find({}).toArray();
+        // delete countriesData[0]["_id"];
+        // res.send(countriesData[0]); // I'm sending back only the object here, which is position 0 in the array.
+
+        const continentsConnection = mongoose.createConnection(uri);
+
+        const countrySchema = new mongoose.Schema({
+            capital: String,
+            definiteArticle: Boolean,
+        });
+
+        const ContinentsModel = continentsConnection.model(
+            "continent",
+            countrySchema
+        );
+
+        const countries = await ContinentsModel.find();
+        console.log("countries:", countries);
+
+        res.send("testing mongoose data");
     } catch (error) {
         throw error;
     }
@@ -189,7 +211,7 @@ app.listen(port, () => {
 const jwt = require("jsonwebtoken");
 const User = require("./models/User.js");
 const bcrypt = require("bcrypt");
-const { default: mongoose } = require("mongoose");
+// const { default: mongoose } = require("mongoose");
 
 const JWT_SECRET = process.env.JWT_SECRET || "secret-key";
 
