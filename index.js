@@ -124,7 +124,7 @@ app.post(
 app.get("/europe", async (req, res) => {
     try {
         const databasePassword = process.env.mongoPassword;
-        const uri = `mongodb+srv://rhysjenkins89:${databasePassword}@capital-cities-site.z6o7t.mongodb.net/?retryWrites=true&w=majority&appName=capital-cities-site`;
+        const uri = `mongodb+srv://rhysjenkins89:${databasePassword}@capital-cities-site.z6o7t.mongodb.net/continents?retryWrites=true&w=majority&appName=capital-cities-site`;
         // const mongoClient = new MongoClient(uri);
         // await mongoClient.connect();
         // const continentsDb = mongoClient.db("continents");
@@ -135,20 +135,22 @@ app.get("/europe", async (req, res) => {
 
         const continentsConnection = mongoose.createConnection(uri);
 
+        await continentsConnection.asPromise();
+
         const countrySchema = new mongoose.Schema({
             capital: String,
             definiteArticle: Boolean,
         });
 
-        const ContinentsModel = continentsConnection.model(
-            "continent",
-            countrySchema
+        const EuropeModel = continentsConnection.model(
+            "Europe",
+            countrySchema,
+            "europe"
         );
 
-        const countries = await ContinentsModel.find();
-        console.log("countries:", countries);
-
-        res.send("testing mongoose data");
+        const countries = await EuropeModel.find();
+        delete countries[0]["_id"]; // This isn't working here for some reason
+        res.send(countries[0]);
     } catch (error) {
         throw error;
     }
