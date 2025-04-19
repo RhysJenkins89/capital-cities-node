@@ -37,7 +37,7 @@
     },
     "El Salvador": {
         "capital": "San Salvador",
-        "definiteArticle": true
+        "definiteArticle": false
     },
     "Grenada": {
         "capital": "St. George's",
