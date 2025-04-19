@@ -125,31 +125,19 @@ app.get("/europe", async (req, res) => {
     try {
         const databasePassword = process.env.mongoPassword;
         const uri = `mongodb+srv://rhysjenkins89:${databasePassword}@capital-cities-site.z6o7t.mongodb.net/continents?retryWrites=true&w=majority&appName=capital-cities-site`;
-        // const mongoClient = new MongoClient(uri);
-        // await mongoClient.connect();
-        // const continentsDb = mongoClient.db("continents");
-        // const europeData = continentsDb.collection("europe");
-        // const countriesData = await europeData.find({}).toArray();
-        // delete countriesData[0]["_id"];
-        // res.send(countriesData[0]); // I'm sending back only the object here, which is position 0 in the array.
-
         const continentsConnection = mongoose.createConnection(uri);
-
         await continentsConnection.asPromise();
-
         const countrySchema = new mongoose.Schema({
             capital: String,
             definiteArticle: Boolean,
         });
-
         const EuropeModel = continentsConnection.model(
             "Europe",
             countrySchema,
             "europe"
         );
-
-        const countries = await EuropeModel.find();
-        delete countries[0]["_id"]; // This isn't working here for some reason
+        const countries = await EuropeModel.find().lean(); // .lean() is a mongoose method that omits the built-in methods and properties on a mongose document, returning instead a POJO. The delete keyword, below, doesn't work on a mongoose document.
+        delete countries[0]._id;
         res.send(countries[0]);
     } catch (error) {
         throw error;
