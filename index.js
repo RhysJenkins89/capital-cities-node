@@ -11,6 +11,7 @@ const Validate = require("./middleware/validate.js");
 const { body, validationResult } = require("express-validator");
 const databaseConnect = require("./database/db.js");
 const mongoose = require("mongoose");
+const CountrySchema = require("./models/Country.js");
 
 // I'm trying what might be a more intuitive way of getting to the database here
 // const { MongoClient } = require("mongodb");
@@ -127,13 +128,9 @@ app.get("/europe", async (req, res) => {
         const uri = `mongodb+srv://rhysjenkins89:${databasePassword}@capital-cities-site.z6o7t.mongodb.net/continents?retryWrites=true&w=majority&appName=capital-cities-site`;
         const continentsConnection = mongoose.createConnection(uri);
         await continentsConnection.asPromise();
-        const countrySchema = new mongoose.Schema({
-            capital: String,
-            definiteArticle: Boolean,
-        });
         const EuropeModel = continentsConnection.model(
             "Europe",
-            countrySchema,
+            CountrySchema,
             "europe"
         );
         const countries = await EuropeModel.find().lean(); // .lean() is a mongoose method that omits the built-in methods and properties on a mongose document, returning instead a POJO. The delete keyword, below, doesn't work on a mongoose document.
@@ -155,8 +152,18 @@ app.get("/asia", async (req, res) => {
 
 app.get("/africa", async (req, res) => {
     try {
-        const africaData = await readFileAsync("./data/africa.json");
-        res.send(africaData);
+        const databasePassword = process.env.mongoPassword;
+        const uri = `mongodb+srv://rhysjenkins89:${databasePassword}@capital-cities-site.z6o7t.mongodb.net/continents?retryWrites=true&w=majority&appName=capital-cities-site`;
+        const continentsConnection = mongoose.createConnection(uri);
+        await continentsConnection.asPromise();
+        const AfricaModel = continentsConnection.model(
+            "Africa",
+            CountrySchema,
+            "africa"
+        );
+        const countries = await AfricaModel.find().lean(); // .lean() is a mongoose method that omits the built-in methods and properties on a mongose document, returning instead a POJO. The delete keyword, below, doesn't work on a mongoose document.
+        delete countries[0]._id;
+        res.send(countries[0]);
     } catch (error) {
         throw error;
     }
