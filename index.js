@@ -13,9 +13,6 @@ const databaseConnect = require("./database/db.js");
 const mongoose = require("mongoose");
 const CountrySchema = require("./models/Country.js");
 
-// I'm trying what might be a more intuitive way of getting to the database here
-// const { MongoClient } = require("mongodb");
-
 const allowedOrigins = [
     "http://localhost:5173",
     "https://cities.rhysjenkins.uk",
@@ -38,7 +35,7 @@ app.use(cors(corsOptions));
 // For the moment, I've removed the following in order to test from my local machine: { origin: "https://cities.rhysjenkins.uk" }
 
 // Connect to the database
-databaseConnect();
+// const continentsConnection = databaseConnect();
 
 app.get("/", (req, res) => {
     res.send("Hello world!");
@@ -122,12 +119,13 @@ app.post(
 
 // const countries = ContinentsModel.findOne()
 
+// This database connection needs to be global
+const databasePassword = process.env.mongoPassword;
+const uri = `mongodb+srv://rhysjenkins89:${databasePassword}@capital-cities-site.z6o7t.mongodb.net/continents?retryWrites=true&w=majority&appName=capital-cities-site`;
+const continentsConnection = mongoose.createConnection(uri);
+
 app.get("/europe", async (req, res) => {
     try {
-        const databasePassword = process.env.mongoPassword;
-        const uri = `mongodb+srv://rhysjenkins89:${databasePassword}@capital-cities-site.z6o7t.mongodb.net/continents?retryWrites=true&w=majority&appName=capital-cities-site`;
-        const continentsConnection = mongoose.createConnection(uri);
-        await continentsConnection.asPromise();
         const EuropeModel = continentsConnection.model(
             "Europe",
             CountrySchema,
