@@ -132,8 +132,10 @@ app.get("/europe", async (req, res) => {
             "europe"
         );
         const countries = await EuropeModel.find().lean(); // .lean() is a mongoose method that omits the built-in methods and properties on a mongose document, returning instead a POJO. The delete keyword, below, doesn't work on a mongoose document.
-        delete countries[0]._id;
-        res.send(countries[0]);
+        countries.forEach((country) => {
+            delete country._id;
+        });
+        res.send(countries);
     } catch (error) {
         throw error;
     }
@@ -141,8 +143,16 @@ app.get("/europe", async (req, res) => {
 
 app.get("/asia", async (req, res) => {
     try {
-        const asiaData = await readFileAsync("./data/asia.json");
-        res.send(asiaData);
+        const AsiaModel = continentsConnection.model(
+            "Asia",
+            CountrySchema,
+            "asia"
+        );
+        const countries = await AsiaModel.find().lean();
+        countries.forEach((country) => {
+            delete country._id;
+        });
+        res.send(countries);
     } catch (error) {
         throw error;
     }
@@ -150,18 +160,16 @@ app.get("/asia", async (req, res) => {
 
 app.get("/africa", async (req, res) => {
     try {
-        const databasePassword = process.env.mongoPassword;
-        const uri = `mongodb+srv://rhysjenkins89:${databasePassword}@capital-cities-site.z6o7t.mongodb.net/continents?retryWrites=true&w=majority&appName=capital-cities-site`;
-        const continentsConnection = mongoose.createConnection(uri);
-        await continentsConnection.asPromise();
         const AfricaModel = continentsConnection.model(
             "Africa",
             CountrySchema,
             "africa"
         );
-        const countries = await AfricaModel.find().lean(); // .lean() is a mongoose method that omits the built-in methods and properties on a mongose document, returning instead a POJO. The delete keyword, below, doesn't work on a mongoose document.
-        delete countries[0]._id;
-        res.send(countries[0]);
+        const countries = await AfricaModel.find().lean();
+        countries.forEach((country) => {
+            delete country._id;
+        });
+        res.send(countries);
     } catch (error) {
         throw error;
     }
@@ -169,10 +177,16 @@ app.get("/africa", async (req, res) => {
 
 app.get("/north-america", async (req, res) => {
     try {
-        const northAmericaData = await readFileAsync(
-            "./data/north-america.json"
+        const NorthAmericaModel = continentsConnection.model(
+            "NorthAmerica",
+            CountrySchema,
+            "north-america"
         );
-        res.send(northAmericaData);
+        const countries = await NorthAmericaModel.find().lean();
+        countries.forEach((country) => {
+            delete country._id;
+        });
+        res.send(countries);
     } catch (error) {
         throw error;
     }
@@ -180,8 +194,16 @@ app.get("/north-america", async (req, res) => {
 
 app.get("/oceania", async (req, res) => {
     try {
-        const oceaniaData = await readFileAsync("./data/oceania.json");
-        res.send(oceaniaData);
+        const OceaniaModel = continentsConnection.model(
+            "Oceania",
+            CountrySchema,
+            "oceania"
+        );
+        const countries = await OceaniaModel.find().lean();
+        countries.forEach((country) => {
+            delete country._id;
+        });
+        res.send(countries);
     } catch (error) {
         throw error;
     }
@@ -189,10 +211,16 @@ app.get("/oceania", async (req, res) => {
 
 app.get("/south-america", async (req, res) => {
     try {
-        const southAmericaData = await readFileAsync(
-            "./data/south-america.json"
+        const SouthAmericaModel = continentsConnection.model(
+            "SouthAmerica",
+            CountrySchema,
+            "south-america"
         );
-        res.send(southAmericaData);
+        const countries = await SouthAmericaModel.find().lean();
+        countries.forEach((country) => {
+            delete country._id;
+        });
+        res.send(countries);
     } catch (error) {
         throw error;
     }
