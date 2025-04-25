@@ -3,6 +3,7 @@ const router = express.Router();
 const ContinentModel = require("../models/Continent");
 const mongoose = require("mongoose");
 const CountrySchema = require("../models/Country");
+const capitaliseFirstLetter = require("../utils/capitaliseFirstLetter");
 
 router.get("/:continent", async (req, res) => {
     const continentName = req.params.continent;
@@ -11,12 +12,20 @@ router.get("/:continent", async (req, res) => {
     const uri = `mongodb+srv://rhysjenkins89:${databasePassword}@capital-cities-site.z6o7t.mongodb.net/continents?retryWrites=true&w=majority&appName=capital-cities-site`;
     const continentsConnection = mongoose.createConnection(uri);
 
-    const EuropeModel = continentsConnection.model(
-        "Europe",
+    // Continent model
+    const ContinentModel = continentsConnection.model(
+        capitaliseFirstLetter(continentName),
         CountrySchema,
-        "europe"
+        continentName
     );
-    const countries = await EuropeModel.find().lean();
+
+    // Europe model
+    // const EuropeModel = continentsConnection.model(
+    //     "Europe",
+    //     CountrySchema,
+    //     "europe"
+    // );
+    const countries = await ContinentModel.find().lean();
 
     countries.forEach((country) => {
         delete country._id;
