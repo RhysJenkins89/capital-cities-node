@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const ContinentModel = require("../models/Continent");
 const mongoose = require("mongoose");
 const CountrySchema = require("../models/Country");
 const capitaliseFirstLetter = require("../utils/capitaliseFirstLetter");
