@@ -5,9 +5,8 @@ const uri = `mongodb+srv://rhysjenkins89:${databasePassword}@capital-cities-site
 
 async function databaseConnect() {
     try {
-        const continentsConnection = mongoose.createConnection(uri);
+        mongoose.createConnection(uri);
         console.log("MongoDB connected successfully.");
-        return continentsConnection;
     } catch (error) {
         console.error("MongoDB connection error:", error);
     }
