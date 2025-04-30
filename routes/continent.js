@@ -6,7 +6,6 @@ const capitaliseFirstLetter = require("../utils/capitaliseFirstLetter");
 
 router.get("/:continent", async (req, res) => {
     const continentName = req.params.continent;
-    console.log("Name:", continentName);
     const databasePassword = process.env.mongoPassword;
     const uri = `mongodb+srv://rhysjenkins89:${databasePassword}@capital-cities-site.z6o7t.mongodb.net/continents?retryWrites=true&w=majority&appName=capital-cities-site`;
     const continentsConnection = mongoose.createConnection(uri);
@@ -25,10 +24,6 @@ router.get("/:continent", async (req, res) => {
     //     "europe"
     // );
     const countries = await ContinentModel.find().lean();
-
-    countries.forEach((country) => {
-        delete country._id;
-    });
     res.send(countries);
 
     // const countries = await ContinentModel.findOne({ name: continentName });
