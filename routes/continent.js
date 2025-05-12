@@ -15,7 +15,7 @@ router.get("/:continent", async (req, res) => {
         capitaliseFirstLetter(continentName),
         CountrySchema,
         continentName
-    );
+    ); // It's this that I'll need to store in a different file and import.
 
     // Europe model
     // const EuropeModel = continentsConnection.model(
