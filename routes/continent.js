@@ -6,12 +6,12 @@ const capitaliseFirstLetter = require("../utils/capitaliseFirstLetter");
 
 router.get("/:continent", async (req, res) => {
     const continentName = req.params.continent;
-    const databasePassword = process.env.mongoPassword;
-    const uri = `mongodb+srv://rhysjenkins89:${databasePassword}@capital-cities-site.z6o7t.mongodb.net/continents?retryWrites=true&w=majority&appName=capital-cities-site`;
-    const continentsConnection = mongoose.createConnection(uri);
+    // const databasePassword = process.env.mongoPassword;
+    // const uri = `mongodb+srv://rhysjenkins89:${databasePassword}@capital-cities-site.z6o7t.mongodb.net/continents?retryWrites=true&w=majority&appName=capital-cities-site`;
+    // const continentsConnection = mongoose.createConnection(uri);
 
     // Continent model
-    const ContinentModel = continentsConnection.model(
+    const ContinentModel = mongoose.model(
         capitaliseFirstLetter(continentName),
         CountrySchema,
         continentName
