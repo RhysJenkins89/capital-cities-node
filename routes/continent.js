@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
-const CountrySchema = require("../models/Country");
+const ContinentModel = require("../models/Continent");
 const capitaliseFirstLetter = require("../utils/capitaliseFirstLetter");
 
 router.get("/:continent", async (req, res) => {
@@ -11,11 +11,11 @@ router.get("/:continent", async (req, res) => {
     // const continentsConnection = mongoose.createConnection(uri);
 
     // Continent model
-    const ContinentModel = mongoose.model(
-        capitaliseFirstLetter(continentName),
-        CountrySchema,
-        continentName
-    ); // It's this that I'll need to store in a different file and import.
+    // const ContinentModel = mongoose.model(
+    //     capitaliseFirstLetter(continentName),
+    //     CountrySchema,
+    //     continentName
+    // ); // It's this that I'll need to store in a different file and import.
 
     // Europe model
     // const EuropeModel = continentsConnection.model(

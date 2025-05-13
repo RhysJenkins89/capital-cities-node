@@ -5,13 +5,10 @@ const app = express();
 const port = process.env.PORT || 3000;
 const jsonParser = bodyParser.json();
 const mongoose = require("mongoose");
-const CountrySchema = require("./models/Country.js");
+// const CountrySchema = require("./models/Country.js");
 const databaseConnect = require("./database/db.js");
 
-const allowedOrigins = [
-    "http://localhost:5173",
-    "https://cities.rhysjenkins.uk",
-];
+const allowedOrigins = ["http://localhost:5173", "https://cities.rhysjenkins.uk"];
 
 const corsOptions = {
     origin: function (origin, callback) {
