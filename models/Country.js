@@ -6,4 +6,4 @@ const CountrySchema = new mongoose.Schema({
     definiteArticle: Boolean,
 });
 
-module.exports = mongoose.model("Continent", CountrySchema);
+module.exports = CountrySchema;
