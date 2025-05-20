@@ -22,12 +22,9 @@ router.get("/:continent", async (req, res) => {
 
     try {
         const modelName = capitaliseFirstLetter(continentName);
-
         const ContinentModel =
             mongoose.models[modelName] || mongoose.model(modelName, CountrySchema, continentName);
-
         const countries = await ContinentModel.find().lean();
-
         res.send(countries);
     } catch (error) {
         console.error("Error fetching countries:", error);
