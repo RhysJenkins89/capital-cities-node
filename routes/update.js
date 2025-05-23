@@ -6,7 +6,8 @@ const jsonParser = bodyParser.json();
 
 router.put("/update", jsonParser, async (req, res) => {
     console.log("This is a put request on the /update route.");
-    console.log("Req:", req.body);
+    // console.log("Req:", req.body);
+    console.log("Res:", res.body);
     res.json(res.body);
 });
 
