@@ -4,14 +4,23 @@ const mongoose = require("mongoose");
 const databaseConnect = require("../database/db");
 const CountrySchema = require("../models/Country");
 
-const Model = mongoose.model("Country", CountrySchema); // Rename
+// const modelName = capitaliseFirstLetter(continentName);
+const EuropeModel = mongoose.model("Europe", CountrySchema, "europe");
 
-databaseConnect().then(async () => {
-    if (mongoose.connection.readyState === 1) {
-        console.log("Connected to the Mongo database.");
-        const result = await Model.updateMany({}, { $set: { confidenceIndex: "1" } });
-        console.log(`Updated ${result.modifiedCount} documents.`);
-    } else {
-        console.log("Not connected.");
+(async () => {
+    try {
+        await databaseConnect();
+        if (mongoose.connection.readyState === 1) {
+            console.log("Connected to the Mongo database.");
+            // const countries = await EuropeModel.find().lean();
+            // console.log("Europe:", countries);
+            const result = await EuropeModel.updateMany({}, { confidenceIndex: "1" });
+            console.log(`Updated ${result.modifiedCount} documents.`);
+        }
+    } catch (error) {
+        console.log("Something went wrong:", error);
+    } finally {
+        mongoose.disconnect();
+        console.log("Disconnected from the DB.");
     }
-});
+})();

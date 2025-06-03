@@ -6,4 +6,5 @@ const CountrySchema = new mongoose.Schema({
     definiteArticle: Boolean,
 });
 
+// module.exports = mongoose.model("Country", CountrySchema)
 module.exports = CountrySchema; // Should I export a model here? At the moment I only export the schema.
