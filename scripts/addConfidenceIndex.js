@@ -1,19 +1,25 @@
-console.log("This is the addConfidenceIndex.js file.");
+// This scripts adds a confidenceIndex property to each document in each collection in the continents database.
 
 const mongoose = require("mongoose");
 const databaseConnect = require("../database/db");
-const CountrySchema = require("../models/Country");
-
-// const modelName = capitaliseFirstLetter(continentName);
-const EuropeModel = mongoose.model("Europe", CountrySchema, "europe");
 
 (async () => {
     try {
         await databaseConnect();
         if (mongoose.connection.readyState === 1) {
             console.log("Connected to the Mongo database.");
-            const result = await EuropeModel.updateMany({}, [{ $set: { confidenceIndex: 1 } }]);
-            console.log(`Updated ${result.modifiedCount} documents.`);
+            const database = mongoose.connection.db;
+            const collections = await database.listCollections().toArray();
+
+            for (const continentCollection of collections) {
+                console.log(`Updating ${continentCollection.name}`);
+                const result = await database
+                    .collection(continentCollection.name)
+                    .updateMany({}, [{ $set: { confidenceIndex: 1 } }]);
+                console.log(
+                    `Updated ${result.modifiedCount} documents on the ${continentCollection.name} collection.`
+                );
+            }
         }
     } catch (error) {
         console.log("Something went wrong:", error);
@@ -22,5 +28,3 @@ const EuropeModel = mongoose.model("Europe", CountrySchema, "europe");
         console.log("Disconnected from the DB.");
     }
 })();
-
-// In MongoDB, think database, collection, document. That is to say, a database hold one or many collections; a collection holds one or many documents.
