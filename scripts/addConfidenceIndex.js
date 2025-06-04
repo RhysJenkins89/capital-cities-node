@@ -12,9 +12,7 @@ const EuropeModel = mongoose.model("Europe", CountrySchema, "europe");
         await databaseConnect();
         if (mongoose.connection.readyState === 1) {
             console.log("Connected to the Mongo database.");
-            // const countries = await EuropeModel.find().lean();
-            // console.log("Europe:", countries);
-            const result = await EuropeModel.updateMany({}, { confidenceIndex: "1" });
+            const result = await EuropeModel.updateMany({}, [{ $set: { confidenceIndex: 1 } }]);
             console.log(`Updated ${result.modifiedCount} documents.`);
         }
     } catch (error) {
@@ -24,3 +22,5 @@ const EuropeModel = mongoose.model("Europe", CountrySchema, "europe");
         console.log("Disconnected from the DB.");
     }
 })();
+
+// In MongoDB, think database, collection, document. That is to say, a database hold one or many collections; a collection holds one or many documents.

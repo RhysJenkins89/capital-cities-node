@@ -4,6 +4,7 @@ const CountrySchema = new mongoose.Schema({
     name: String,
     capital: String,
     definiteArticle: Boolean,
+    confidenceIndex: Number,
 });
 
 // module.exports = mongoose.model("Country", CountrySchema)
