@@ -1,4 +1,4 @@
-// This scripts adds a confidenceIndex property to each document in each collection in the continents database.
+// This script adds a confidenceIndex property to each document in each collection in the continents database.
 
 const mongoose = require("mongoose");
 const databaseConnect = require("../database/db");
