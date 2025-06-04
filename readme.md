@@ -1,6 +1,6 @@
 # Doing
 
--   Api auth route
+-   Updating confidenceIndex
 
 ## To do
 
