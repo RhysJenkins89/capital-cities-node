@@ -7,35 +7,31 @@ const CountrySchema = require("../models/Country"); // I want the continent mode
 const capitaliseFirstLetter = require("../utils/capitaliseFirstLetter");
 
 router.put("/update", jsonParser, async (req, res) => {
-    const continentName = req.body.continent;
-    countryId = req.body.countryId;
-    userConfidence = req.body.userConfidence;
-    console.log("This is a put request on the /update route.");
-    console.log("Req:", req.body);
-
-    // const database = mongoose.connection.db;
-    // const result = await database
-    //     .collection(req.body.continent)
-    //     .updateOne({ _id: req.body.countryId }, [{ confidenceIndex: req.body.userConfidence }]);
-    // const document = await database.collection(req.body.continent);
-
-    const ContinentModel = mongoose.model(
-        capitaliseFirstLetter(continentName),
-        CountrySchema,
-        continentName
-    );
-
-    const document = await ContinentModel.findById(countryId);
-    document.confidenceIndex = userConfidence;
-    console.log("document:", document);
-    const updatedDocument = await document.save();
-    console.log("Updated document:", updatedDocument);
-
-    res.json(req.body);
-
-    // const doc = await Model.findById(id);
-    // doc.name = "jason bourne";
-    // await doc.save();
+    try {
+        const { continent, countryId, userConfidence } = req.body;
+        if (!continent || !countryId || userConfidence === undefined) {
+            return res.status(400).json({ error: "Missing required fields." });
+        }
+        // Note userConfidence. Because userConfidence is a number, it is possble that the frontend will send 0, which is a falsy value. In the case of !userConfidence, 0 would fit this criteria, and so the function would return a status of 400
+        const ContinentModel = mongoose.model(
+            capitaliseFirstLetter(continent),
+            CountrySchema,
+            continent
+        );
+        const document = await ContinentModel.findById(countryId);
+        if (!document) {
+            return res.status(404).json({ error: "Document not found." });
+        }
+        document.confidenceIndex = userConfidence;
+        const updatedDocument = await document.save();
+        return res.status(200).json({
+            message: "Document updated successfully.",
+            data: updatedDocument,
+        });
+    } catch (error) {
+        console.error("Update error: ", error);
+        res.status(500).json({ error: "Internal server error." });
+    }
 });
 
 module.exports = router;
