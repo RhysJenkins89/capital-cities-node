@@ -7,3 +7,5 @@ In this file I'll note down errors and mistakes that occured throughout the proc
 // This is it: somehow, the get request is posting to my MongoDB. This is weird.
 
 // My theory: mongoose is searching for the collection. It doesn't exist. Instead of sending back an error, it creates the collection and sends back the data, which in this case is an empty array.
+
+// Note userConfidence. Because userConfidence is a number, it is possble that the frontend will send 0, which is a falsy value. In the case of !userConfidence, 0 would fit this criteria, and so the function would return a status of 400

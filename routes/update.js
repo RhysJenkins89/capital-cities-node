@@ -12,7 +12,14 @@ router.put("/update", jsonParser, async (req, res) => {
         if (!continent || !countryId || userConfidence === undefined) {
             return res.status(400).json({ error: "Missing required fields." });
         }
-        // Note userConfidence. Because userConfidence is a number, it is possble that the frontend will send 0, which is a falsy value. In the case of !userConfidence, 0 would fit this criteria, and so the function would return a status of 400
+
+        const CountrySchema = new mongoose.Schema({
+            name: String,
+            capital: String,
+            definiteArticle: Boolean,
+            confidenceIndex: Number,
+        });
+
         const ContinentModel = mongoose.model(
             capitaliseFirstLetter(continent),
             CountrySchema,
