@@ -4,22 +4,30 @@ const bodyParser = require("body-parser");
 const jsonParser = bodyParser.json();
 const mongoose = require("mongoose");
 const CountrySchema = require("../models/Country"); // I want the continent model, not the country schema.
+const ContinentModelTest = require("../models/Continent");
 const capitaliseFirstLetter = require("../utils/capitaliseFirstLetter");
+const UpdateController = require("../controllers/UpdateController");
 
 router.put("/update", jsonParser, async (req, res) => {
+    // Remember to move this functionality into a controller
+    UpdateController();
     try {
         const { continent, countryId, userConfidence } = req.body;
         if (!continent || !countryId || userConfidence === undefined) {
             return res.status(400).json({ error: "Missing required fields." });
         }
 
-        const CountrySchema = new mongoose.Schema({
-            name: String,
-            capital: String,
-            definiteArticle: Boolean,
-            confidenceIndex: Number,
-        });
+        // const continent = await Continent.findOneAndUpdate(
+        //     { name: continent, "countries._id": countryId },
+        //     { $set: { "countries.$.confidenceIndex": userConfidence } },
+        //     { new: true }
+        // );
 
+        const continentDB = await ContinentModelTest.findOne({ name: continent });
+        console.log("ContinentModelTest: ", ContinentModelTest.findOne({}));
+        console.log("continentDB: ", continentDB);
+
+        //
         const ContinentModel = mongoose.model(
             capitaliseFirstLetter(continent),
             CountrySchema,
