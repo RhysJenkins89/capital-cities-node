@@ -6,11 +6,11 @@ const mongoose = require("mongoose");
 const CountrySchema = require("../models/Country"); // I want the continent model, not the country schema.
 const ContinentModelTest = require("../models/Continent");
 const capitaliseFirstLetter = require("../utils/capitaliseFirstLetter");
-const UpdateController = require("../controllers/UpdateController");
+const updateController = require("../controllers/updateController");
 
 router.put("/update", jsonParser, async (req, res) => {
     // Remember to move this functionality into a controller
-    UpdateController();
+    updateController();
     try {
         const { continent, countryId, userConfidence } = req.body;
         if (!continent || !countryId || userConfidence === undefined) {
@@ -23,7 +23,7 @@ router.put("/update", jsonParser, async (req, res) => {
         //     { new: true }
         // );
 
-        const continentDB = await ContinentModelTest.findOne({ name: continent });
+        const continentDB = await ContinentModelTest.findOne({ continent });
         console.log("ContinentModelTest: ", ContinentModelTest.findOne({}));
         console.log("continentDB: ", continentDB);
 
