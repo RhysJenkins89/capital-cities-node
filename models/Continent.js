@@ -8,7 +8,7 @@ const CountrySchema = new mongoose.Schema({
 });
 
 const ContinentSchema = new mongoose.Schema({
-    name: { type: String, required: true },
+    // name: { type: String, required: true },
     countries: [CountrySchema],
 });
 

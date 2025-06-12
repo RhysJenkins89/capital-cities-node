@@ -24,8 +24,8 @@ router.put("/update", jsonParser, async (req, res) => {
         // );
 
         const continentDB = await ContinentModelTest.findOne({ continent });
-        console.log("ContinentModelTest: ", ContinentModelTest.findOne({}));
         console.log("continentDB: ", continentDB);
+        // console.log("ContinentModelTest: ", ContinentModelTest.findOne({}));
 
         //
         const ContinentModel = mongoose.model(
