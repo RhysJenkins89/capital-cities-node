@@ -7,6 +7,7 @@ const continentNames = ["europe", "africa", "asia", "north-america", "south-amer
 
 const countrySchema = new mongoose.Schema({}, { strict: false });
 const Country = mongoose.model("Country", countrySchema, "countries");
+require("dotenv").config();
 const databasePassword = process.env.mongoPassword;
 
 (async () => {
