@@ -8,5 +8,4 @@ const CountrySchema = new mongoose.Schema({
     confidenceIndex: Number,
 });
 
-// module.exports = mongoose.model("Country", CountrySchema)
-module.exports = mongoose.model("Country", CountrySchema); // Should I export a model here? At the moment I only export the schema.
+module.exports = mongoose.model("Country", CountrySchema);

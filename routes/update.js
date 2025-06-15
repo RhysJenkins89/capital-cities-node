@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const jsonParser = bodyParser.json();
 const mongoose = require("mongoose");
 const CountrySchema = require("../models/Country"); // I want the continent model, not the country schema.
-const ContinentModelTest = require("../models/Continent");
+// const ContinentModelTest = require("../models/Continent");
 const capitaliseFirstLetter = require("../utils/capitaliseFirstLetter");
 const updateController = require("../controllers/updateController");
 

@@ -9,7 +9,29 @@ const CountryModel = require("../models/Country");
         await mongoose.connect(uri);
         if (mongoose.connection.readyState === 1) {
             const countries = await CountryModel.find({});
-            console.log("Countries:", countries);
+            // console.log("Countries:", countries);
+
+            // const modifiedCountries = countries.map((country) => {
+            //     const countryObject = country.toObject();
+            //     delete countryObject.__v;
+            //     return countryObject;
+            // });
+
+            // if (modifiedCountries.length > 0) {
+            //     await CountryModel.insertMany(modifiedCountries);
+            // }
+
+            // const docs = await SourceModel.find({});
+            // console.log(`Migrating ${docs.length} from ${continent}`);
+            // const modifiedDocs = docs.map((doc) => {
+            //     const obj = doc.toObject();
+            //     obj.continent = continent;
+            //     delete obj._id; // Avoid _id conflict
+            //     return obj;
+            // });
+            // if (modifiedDocs.length > 0) {
+            //     await TargetCountry.insertMany(modifiedDocs);
+            // }
         }
     } catch (error) {
         console.error("Connection error:", error);
@@ -17,14 +39,3 @@ const CountryModel = require("../models/Country");
         await mongoose.close();
     }
 })();
-
-// async function databaseConnect() {
-//     try {
-//         await mongoose.connect(uri);
-//         console.log("MongoDB connected successfully.");
-//     } catch (error) {
-//         console.error("MongoDB connection error:", error);
-//     }
-// }
-
-// module.exports = databaseConnect;
