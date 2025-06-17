@@ -1,16 +1,19 @@
 // This script updates my MongoDB structure. From multiple continent collections, I'll go to a single countries collection. Each country document will feature a continent property.
 
 const mongoose = require("mongoose");
-// const databaseConnect = require("../database/db");
-
-const continentNames = ["europe", "africa", "asia", "north-america", "south-america", "oceania"];
-
 const countrySchema = new mongoose.Schema({}, { strict: false });
-const Country = mongoose.model("Country", countrySchema, "countries");
 require("dotenv").config();
 const databasePassword = process.env.mongoPassword;
 
 (async () => {
+    const continentNames = [
+        "europe",
+        "africa",
+        "asia",
+        "north-america",
+        "south-america",
+        "oceania",
+    ];
     try {
         const sourceDatabase = await mongoose.createConnection(
             `mongodb+srv://rhysjenkins89:${databasePassword}@capital-cities-site.z6o7t.mongodb.net/continents?retryWrites=true&w=majority&appName=capital-cities-site`
@@ -39,7 +42,7 @@ const databasePassword = process.env.mongoPassword;
             const modifiedDocs = docs.map((doc) => {
                 const obj = doc.toObject();
                 obj.continent = continent;
-                delete obj._id; // Avoid _id conflict
+                delete obj._id;
                 return obj;
             });
             if (modifiedDocs.length > 0) {
