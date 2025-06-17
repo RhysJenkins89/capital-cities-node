@@ -14,7 +14,6 @@ const validContinentRoutes = [
 
 router.get("/:continent", async (req, res) => {
     const continentName = req.params.continent;
-
     if (!validContinentRoutes.includes(continentName)) {
         return res.status(400).json({ error: `Incorrect continent route: '${continentName}'` });
     }
