@@ -2,8 +2,8 @@ const CountryModel = require("../models/Country");
 
 async function updateController(req, res) {
     try {
-        const { continent, countryId, userConfidence } = req.body;
-        if (!continent || !countryId || userConfidence === undefined) {
+        const { countryId, userConfidence } = req.body;
+        if (!countryId || userConfidence === undefined) {
             return res.status(400).json({ error: "Missing required fields." });
         }
         const document = await CountryModel.findById(countryId);
