@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 const continentRoutes = require("./continent");
 const updateRoute = require("./update");
-const authRoute = require("./auth");
+const registerRoute = require("./register");
 
-router.use("/", authRoute, continentRoutes, updateRoute);
+router.use("/", registerRoute, continentRoutes, updateRoute);
 
 module.exports = router;
