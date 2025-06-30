@@ -37,10 +37,7 @@ const validateRegisterInput = [
         .escape(),
     (req, res, next) => {
         const result = validationResult(req);
-        console.log("result:", result);
-
         if (result.isEmpty()) {
-            console.log("No errors found.");
             next();
         } else {
             return res.status(400).json({ errors: result.array() });

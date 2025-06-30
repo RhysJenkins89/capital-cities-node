@@ -1,5 +1,9 @@
 async function registerController(req, res) {
-    console.log("This is the registerController function");
+    const { firstName, lastName, email, password } = req.body;
+    console.log("firstName:", firstName);
+    console.log("lasttName:", lastName);
+    console.log("email:", email);
+    console.log("password:", password);
     res.json({ message: "This is the registerController function" });
 }
 
