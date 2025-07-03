@@ -5,11 +5,20 @@ const UserSchema = new mongoose.Schema({
     firstName: {
         type: String,
         required: true,
-        trim: true,
     },
-    lastName: String,
-    email: String,
-    password: String,
+    lastName: {
+        type: String,
+        required: true,
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    password: {
+        type: String,
+        required: true,
+    },
 });
 
 module.exports = mongoose.model("User", UserSchema);
