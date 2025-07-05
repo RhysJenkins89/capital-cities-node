@@ -40,7 +40,7 @@ const validateRegisterInput = [
         if (result.isEmpty()) {
             next();
         } else {
-            return res.status(400).json({ errors: result.array() });
+            return res.status(400).json({ message: "An error occurred.", errors: result.array() });
         }
     },
 ];

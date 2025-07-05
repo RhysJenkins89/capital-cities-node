@@ -28,6 +28,9 @@ const UserSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-// Created, updated
+UserSchema.pre("save", function (next) {
+    // Do something here
+    next();
+});
 
 module.exports = mongoose.model("User", UserSchema);
