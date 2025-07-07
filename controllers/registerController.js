@@ -6,7 +6,9 @@ async function registerController(req, res) {
 
     // Save the user
     const newUser = new User({ firstName, lastName, email, password });
+    const userIsUnique = await User.find({ email: email });
     console.log("newUser:", newUser);
+    console.log("newUser is unique:", userIsUnique);
 }
 
 module.exports = registerController;
