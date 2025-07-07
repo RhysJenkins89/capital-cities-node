@@ -9,6 +9,9 @@ async function registerController(req, res) {
     const userIsUnique = await User.find({ email: email });
     console.log("newUser:", newUser);
     console.log("newUser is unique:", userIsUnique);
+
+    // If the user is unique, save the user to the database:
+    // await newUser.save();
 }
 
 module.exports = registerController;

@@ -30,6 +30,7 @@ const UserSchema = new mongoose.Schema(
 
 UserSchema.pre("save", function (next) {
     // Do something here
+    // I'll need to check the password here, or add another middleware layer
     next();
 });
 
