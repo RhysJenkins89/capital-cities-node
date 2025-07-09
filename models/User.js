@@ -29,7 +29,6 @@ const UserSchema = new mongoose.Schema(
 );
 
 UserSchema.pre("save", async function (next) {
-    console.log("This is the presave function.");
     if (!this.isModified("password")) {
         return next();
     }

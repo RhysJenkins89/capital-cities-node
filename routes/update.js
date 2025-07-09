@@ -4,8 +4,6 @@ const bodyParser = require("body-parser");
 const jsonParser = bodyParser.json();
 const updateController = require("../controllers/updateController");
 
-router.put("/update", jsonParser, async (req, res) => {
-    updateController(req, res);
-});
+router.put("/update", jsonParser, updateController);
 
 module.exports = router;
