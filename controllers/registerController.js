@@ -1,17 +1,20 @@
 const User = require("../models/User");
 
 async function registerController(req, res) {
-    res.json({ message: "This is the registerController function" });
     const { firstName, lastName, email, password } = req.body;
-
-    // Save the user
-    const newUser = new User({ firstName, lastName, email, password });
-    const userIsUnique = await User.find({ email: email });
-    console.log("newUser:", newUser);
-    console.log("newUser is unique:", userIsUnique);
-
-    // If the user is unique, save the user to the database:
-    // await newUser.save();
+    try {
+        const userEmailExists = await User.findOne({ email: email });
+        if (userEmailExists) {
+            return res.status(400).json({ message: "This email already exists in the database." });
+        }
+        const newUser = new User({ firstName, lastName, email, password });
+        await newUser.save();
+        return res
+            .status(201)
+            .json({ message: "The user was successfully saved in the database." });
+    } catch (error) {
+        return res.status(500).json({ message: "An error occurred." });
+    }
 }
 
 module.exports = registerController;
