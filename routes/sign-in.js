@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const jsonParser = require("body-parser").json();
-const updateController = require("../controllers/update-controller");
+const signInController = require("../controllers/sign-in-controller");
 
-router.put("/update", jsonParser, updateController);
+router.get("/signin", jsonParser, signInController);
 
 module.exports = router;
