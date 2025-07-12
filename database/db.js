@@ -8,6 +8,7 @@ async function databaseConnect() {
         await mongoose.connect(uri);
         console.log("MongoDB connected successfully.");
     } catch (error) {
+        // If there is no internet, this won't fail gracefully. It's a rare case, but it's worth considering.
         console.error("MongoDB connection error:", error);
     }
 }
