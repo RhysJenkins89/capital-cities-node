@@ -15,11 +15,6 @@ async function registerController(req, res) {
     } catch (error) {
         return res.status(500).json({ message: "An error occurred." });
     }
-    // Register flow
-    // The user submits data to this controller
-    // I send back the 201 status
-    // On 201 status, the frontend redirects the user to a login page
-    // The user then logs in to the application as normal
 }
 
 module.exports = registerController;
