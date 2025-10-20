@@ -25,8 +25,6 @@ async function signInController(req, res) {
         const token = jwt.sign(payload, process.env.JWT_SECRET, {
             expiresIn: process.env.JWT_EXPIRES_IN || "1h",
         });
-        // return res.status(200).json({ token: token });
-
         return res
             .cookie("token", token, {
                 httpOnly: true,
@@ -34,7 +32,7 @@ async function signInController(req, res) {
                 sameSite: "lax",
                 maxAge: 60 * 60 * 1000,
             })
-            .json({ message: "User successfully logged in." });
+            .json({ message: "User successfully logged in.", data: userData });
     } catch (error) {
         console.error("error:", error);
     }
