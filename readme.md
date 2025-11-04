@@ -8,6 +8,8 @@
 -   Build routes
 -   Add user authenication
 -   Add an external database
+-   Add a staging site
+-   Work out a basic CI/CD pipeline
 
 ## Notes
 
