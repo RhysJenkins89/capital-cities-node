@@ -1,4 +1,4 @@
-// const express = require("express");
+const express = require("express");
 const router = express.Router();
 const jsonParser = require("body-parser").json();
 const signOutController = require("../controllers/sign-out-controller");
