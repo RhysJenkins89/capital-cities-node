@@ -5,7 +5,16 @@ const updateRoute = require("./update");
 const registerRoute = require("./register");
 const signInRoute = require("./sign-in");
 const signOutRoute = require("./sign-out");
+const authoriseUserRoute = require("./auth");
 
-router.use("/", signInRoute, signOutRoute, registerRoute, continentRoutes, updateRoute);
+router.use(
+    "/",
+    authoriseUserRoute,
+    signInRoute,
+    signOutRoute,
+    registerRoute,
+    continentRoutes,
+    updateRoute,
+);
 
 module.exports = router;
