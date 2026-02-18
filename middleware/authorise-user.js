@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 
 function authoriseUser(req, res, next) {
+    console.log("This is the authoriseUser function.");
     const token = req.cookies.token;
     if (!token) {
         return res.status(401).json({ message: "Token required." });
