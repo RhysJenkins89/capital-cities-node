@@ -8,13 +8,14 @@ const cookieParser = require("cookie-parser");
 const allowedOrigins = ["http://localhost:5173", "https://cities.rhysjenkins.uk"]; // I should change this. The allowedOrigins variable should be populated depending on whether or not I am in dev mode.
 
 const corsOptions = {
-    origin: function (origin, callback) {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error("Not allowed by CORS"));
-        }
-    }, // I need to properly understand what's going on here. Come back to this later.
+    origin: "http://localhost:5173",
+    // function (origin, callback) {
+    //     if (!origin || allowedOrigins.includes(origin)) {
+    //         callback(null, true);
+    //     } else {
+    //         callback(new Error("Not allowed by CORS"));
+    //     }
+    // }, // I need to properly understand what's going on here. Come back to this later.
     // origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
