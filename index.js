@@ -17,8 +17,8 @@ const corsOptions = {
     //     }
     // }, // I need to properly understand what's going on here. Come back to this later.
     // origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    // allowedHeaders: ["Content-Type", "Authorization"],
+    // methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
 };
 
