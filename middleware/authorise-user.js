@@ -15,7 +15,6 @@ function authoriseUser(req, res, next) {
     } catch (error) {
         res.status(401).json({ message: "An error occurred." });
     }
-    // I would imagine that I need to call next() at some point here.
 }
 
 module.exports = authoriseUser;
