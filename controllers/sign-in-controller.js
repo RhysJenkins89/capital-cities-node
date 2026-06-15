@@ -29,6 +29,7 @@ async function signInController(req, res) {
             .cookie("token", token, {
                 httpOnly: true,
                 sameSite: "lax",
+                secure: false,
             })
             .json({ message: "User successfully logged in.", data: userData });
     } catch (error) {
