@@ -14,9 +14,9 @@ router.use(
   signInRoute,
   signOutRoute,
   registerRoute,
+  emailTestRoute,
   continentRoutes,
   updateRoute,
-  emailTestRoute,
 );
 
 module.exports = router;
