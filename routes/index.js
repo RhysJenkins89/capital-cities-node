@@ -6,15 +6,17 @@ const registerRoute = require("./register");
 const signInRoute = require("./sign-in");
 const signOutRoute = require("./sign-out");
 const authoriseUserRoute = require("./auth");
+const emailTestRoute = require("./email");
 
 router.use(
-    "/",
-    authoriseUserRoute,
-    signInRoute,
-    signOutRoute,
-    registerRoute,
-    continentRoutes,
-    updateRoute,
+  "/",
+  authoriseUserRoute,
+  signInRoute,
+  signOutRoute,
+  registerRoute,
+  continentRoutes,
+  updateRoute,
+  emailTestRoute,
 );
 
 module.exports = router;
