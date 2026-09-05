@@ -12,8 +12,8 @@ const nodemailer = require("nodemailer");
 // });
 
 const transporter = nodemailer.createTransport({
-  host: "localhost",
-  port: 8025,
+  host: process.env.SMTP_HOST,
+  port: process.env.SMTP_PORT,
   secure: false,
 });
 
@@ -34,14 +34,12 @@ async function emailTest(req, res) {
   } catch (error) {
     console.log("Something has gone wrong.", error);
   }
-
-  // const info = await transporter.sendMail({
-  //   from: '"Example Team" <team@example.com>', // sender address
-  //   to: "alice@example.com, bob@example.com", // list of recipients
-  //   subject: "Hello", // subject line
-  //   text: "Hello world?", // plain text body
-  //   html: "<b>Hello world?</b>", // HTML body
-  // });
 }
 
 module.exports = emailTest;
+
+// Star to convert this repo to TypeScript
+
+// I need to understand conceptually what is going on here
+
+// The Nodemailer package doesn't send an email per se. Nodemailer hands an email to an SMTP server, which then delivers the email. SMTP stands for Simple Mail Transfer Protocol.
