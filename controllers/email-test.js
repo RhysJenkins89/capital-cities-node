@@ -38,8 +38,10 @@ async function emailTest(req, res) {
 
 module.exports = emailTest;
 
-// Star to convert this repo to TypeScript
+// Start to convert this repo to TypeScript
 
 // I need to understand conceptually what is going on here
 
 // The Nodemailer package doesn't send an email per se. Nodemailer hands an email to an SMTP server, which then delivers the email. SMTP stands for Simple Mail Transfer Protocol.
+// Note that I'm using Mailpit locally to receive emails on my local machine. To start Mailpit, run brew services start mailpit. To stop it, run brew services top mailpit.
+// Once Mailpit has been started, navigate to port 8025 for the web UI, and use port 1025 for the SMTP server.

@@ -1,0 +1,352 @@
+[
+  {
+    "name": "Alabama",
+    "capital": "Montgomery",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Alaska",
+    "capital": "Juneau",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Arizona",
+    "capital": "Phoenix",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Arkansas",
+    "capital": "Little Rock",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "California",
+    "capital": "Sacramento",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Colorado",
+    "capital": "Denver",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Connecticut",
+    "capital": "Hartford",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Delaware",
+    "capital": "Dover",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Florida",
+    "capital": "Tallahassee",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Georgia",
+    "capital": "Atlanta",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Hawaii",
+    "capital": "Honolulu",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Idaho",
+    "capital": "Boise",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Illinois",
+    "capital": "Springfield",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Indiana",
+    "capital": "Indianapolis",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Iowa",
+    "capital": "Des Moines",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Kansas",
+    "capital": "Topeka",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Kentucky",
+    "capital": "Frankfort",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Louisiana",
+    "capital": "Baton Rouge",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Maine",
+    "capital": "Augusta",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Maryland",
+    "capital": "Annapolis",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Massachusetts",
+    "capital": "Boston",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Michigan",
+    "capital": "Lansing",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Minnesota",
+    "capital": "Saint Paul",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Mississippi",
+    "capital": "Jackson",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Missouri",
+    "capital": "Jefferson City",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Montana",
+    "capital": "Helena",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Nebraska",
+    "capital": "Lincoln",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Nevada",
+    "capital": "Carson City",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "New Hampshire",
+    "capital": "Concord",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "New Jersey",
+    "capital": "Trenton",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "New Mexico",
+    "capital": "Santa Fe",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "New York",
+    "capital": "Albany",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "North Carolina",
+    "capital": "Raleigh",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "North Dakota",
+    "capital": "Bismarck",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Ohio",
+    "capital": "Columbus",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Oklahoma",
+    "capital": "Oklahoma City",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Oregon",
+    "capital": "Salem",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Pennsylvania",
+    "capital": "Harrisburg",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Rhode Island",
+    "capital": "Providence",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "South Carolina",
+    "capital": "Columbia",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "South Dakota",
+    "capital": "Pierre",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Tennessee",
+    "capital": "Nashville",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Texas",
+    "capital": "Austin",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Utah",
+    "capital": "Salt Lake City",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Vermont",
+    "capital": "Montpelier",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Virginia",
+    "capital": "Richmond",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Washington",
+    "capital": "Olympia",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "West Virginia",
+    "capital": "Charleston",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Wisconsin",
+    "capital": "Madison",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  },
+  {
+    "name": "Wyoming",
+    "capital": "Cheyenne",
+    "definiteArticle": false,
+    "continent": "north-america",
+    "confidenceIndex": 1
+  }
+]
