@@ -7,6 +7,7 @@ const validContinentRoutes = [
   "north-america",
   "south-america",
   "oceania",
+  "USA",
 ];
 
 async function continentController(req, res) {
@@ -15,8 +16,13 @@ async function continentController(req, res) {
     return res.status(400).json({ error: `Incorrect continent route: '${continentName}'` });
   }
   try {
-    const countries = await CountryModel.find({ continent: continentName });
-    res.send(countries);
+    if (continentName === "USA") {
+      const americanStates = require("../database/temp-usa.json");
+      res.send(americanStates);
+    } else {
+      const countries = await CountryModel.find({ continent: continentName });
+      res.send(countries);
+    }
   } catch (error) {
     console.error("Error fetching data:", error);
     return res.status(500).json({
