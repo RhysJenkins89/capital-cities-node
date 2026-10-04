@@ -6,7 +6,7 @@
 // export { URI, PORT, SECRET_ACCESS_TOKEN };
 
 const config = {
-  port: process.env.port || 3000,
+  port: process.env.PORT || 3000,
   corsOrigin:
     process.env.NODE_ENV === "production"
       ? "https://cities.rhysjenkins.uk"
